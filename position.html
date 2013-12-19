@@ -1,0 +1,126 @@
+<html>
+<head>
+<style type="text/css">
+.section {
+position:relative;
+padding:0px;
+/*overflow:auto;*/
+height:500px;
+width:300px;
+background-color:gray;
+}
+.footer {
+position:absolute;
+bottom:0px;
+height:50px;
+background-color:red;
+width:300px;
+}
+#tipwindow {
+background-color:yellow;
+position:fixed;
+bottom:0px;
+right:0px;
+/*height:250px;*/
+width:250px;
+border: 1px solid;
+}
+.title {
+padding:0 5px 0 5px;
+height:20px;
+background-color:red;
+}
+.right {
+float:right;
+}
+</style>
+<script type="text/javascript">
+function changeH(addH) {
+	var msgPop = document.getElementById("tipwindow");
+	var currentH = msgPop.style.height;
+	var popH = parseInt(currentH == '' ? '0' : currentH);
+	if (popH <= 100 && addH > 0 || popH >= 20 && addH < 0) {
+		msgPop.style.height = (popH + addH).toString() + "px";
+	}
+	else {
+		clearInterval(timer);
+		var alink = document.getElementById("show_pop")
+		if (popH >= 100)
+		{
+			alink.href = "javascript:hide_pop()";
+			alink.innerHTML = "-";
+		} else if (popH <= 20)
+		{
+			alink.href = "javascript:show_pop()";
+			alink.innerHTML = "+";
+		}
+	}
+}
+
+function changeH1(addH) {
+	var msgPop = document.getElementById("tipwindow");
+	var currentH = msgPop.style.height;
+	var popH = parseInt(currentH == '' ? '0' : currentH);
+	if (popH <= 100 && addH > 0 || popH >= 1 && addH < 0) {
+		msgPop.style.height = (popH + addH).toString() + "px";
+	}
+	else {
+		clearInterval(timer);
+		msgPop.style.display = "none";
+	}
+}
+
+function show_pop() {
+	document.getElementById("tipwindow").style.display = "block";
+	timer = setInterval("changeH(4)", 4);
+}
+function hide_pop() {
+	timer = setInterval("changeH(-4)", 4);
+}
+function close_pop() {
+	timer = setInterval("changeH1(-4)", 4);
+}
+window.onload=function() {
+	setTimeout("show_pop()", 800); // call show_pop() after 0.8 seconds.
+}
+</script>
+</head>
+<body>
+<div class="section">
+	<div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	bbbbbbbb
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	aaaaaaaaa
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/></br>
+	</div>
+	<div class="footer">
+	</div>
+</div>
+<div id="tipwindow" style="display:none;">
+<div class="title">
+<div class="right">
+<a id="show_pop" href="javascript:hide_pop()">-</a>
+<a href="javascript:close_pop()">X</a>
+</div>
+</div>
+</div>
+</body>
+</html>
